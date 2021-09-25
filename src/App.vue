@@ -1,23 +1,47 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="https://vuejs.org/images/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <h1>Hello World</h1>
+    <span>{{ count }}</span>
+    <br />
+    <button @click="setCount">Click</button>
+
+    <h2>{{ text }}</h2>
+    <input type="text" v-model="text" />
+    <button @click="reverseText">Reverse</button>
+    <button @click="resetText">Reset</button>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue';
-import { reactive, onMounted } from 'vue';
+import { ref, onMounted } from 'vue';
 export default {
   name: 'App',
-  components: {
-    HelloWorld,
-  },
+  components: {},
   setup() {
+    const count = ref(1);
+    const setCount = () => {
+      count.value++;
+    };
+
+    const text = ref('Hello World');
+    const reverseText = () => {
+      text.value = text.value.split('').reverse().join('');
+    };
+    const resetText = () => {
+      text.value = 'Hello World';
+    };
     onMounted(() => {
       console.log(1);
       console.log(32);
     });
+
+    return {
+      count,
+      setCount,
+      text,
+      reverseText,
+      resetText,
+    };
   },
 };
 </script>
