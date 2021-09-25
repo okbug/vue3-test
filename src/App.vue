@@ -16,6 +16,7 @@ export default {
   setup() {
     onMounted(() => {
       console.log(1);
+      console.log(32);
     });
   },
 };
