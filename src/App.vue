@@ -2,6 +2,7 @@
   <div id="app">
     <h1>Hello World</h1>
     <span>{{ count }}</span>
+    <span>double: {{ double }} </span>
     <br />
     <button @click="setCount">Click</button>
 
@@ -13,7 +14,7 @@
 </template>
 
 <script>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, watchEffect, computed } from 'vue';
 export default {
   name: 'App',
   components: {},
@@ -22,6 +23,12 @@ export default {
     const setCount = () => {
       count.value++;
     };
+
+    const double = computed(() => count.value * 2);
+
+    watchEffect(() => {
+      console.log(count.value, 11123);
+    });
 
     const text = ref('Hello World');
     const reverseText = () => {
@@ -41,6 +48,7 @@ export default {
       text,
       reverseText,
       resetText,
+      double,
     };
   },
 };
