@@ -27,7 +27,7 @@ export default {
     const double = computed(() => count.value * 2);
 
     watchEffect(() => {
-      console.log(count.value, 11123);
+      console.log(count.value, 'watch');
     });
 
     const text = ref('Hello World');
